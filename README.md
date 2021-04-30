@@ -6,3 +6,5 @@ Animation [script](https://github.com/arabusov/theormech/blob/main/animations/po
 ![Well potential solution](https://raw.githubusercontent.com/arabusov/theormech/main/pics/potential_well.png)
 
 ![potential well](https://raw.githubusercontent.com/arabusov/theormech/main/pics/well_vs_harmonic.png)
+
+![potential well](https://raw.githubusercontent.com/arabusov/theormech/main/pics/well_vs_math.png)
