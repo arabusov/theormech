@@ -1,2 +1,3 @@
-# theormech
-Some fun stuff for analytical mechanics
+# Analytical Mechanics
+Some fun stuff: python scripts, plots, etc.
+## Potential well
