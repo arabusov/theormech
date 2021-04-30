@@ -5,13 +5,11 @@
 # Copyright (c) 2021 Andrei Rabusov
 # Derived from matplotlib.animation example for double pendulum
 #
-# This script animates (x, t) plot for 1D potential well with
+# This script plots potential well:
 #                      pi x
 #  U (x) = V_0 tg**2 (-----)
 #                      2 a
 #
-# Change line No. 34 from E = V0 to E = 0.1 * V0 or E = 100 * V0
-# to study different cases
 
 from numpy import sin, cos
 import numpy as np
