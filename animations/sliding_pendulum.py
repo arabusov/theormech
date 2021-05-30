@@ -16,7 +16,7 @@
 # 
 # Execution
 # =========
-# Type `python3 free_pendulum.py` in your GUI Terminal. A new window with
+# Type `python3 sliding_pendulum.py` in your GUI Terminal. A new window with
 # animation should appear on your screen automatically, if everything is
 # fine.
 #
@@ -53,22 +53,21 @@ M1 = 1.0  # mass of the first particle (fixed on the X axis)
 M2 = 1.0  # mass of the second particle, the bottom end of the pendulum
 t_stop = 5  # how many seconds to simulate
 history_len = 500  # how many trajectory points to display
-
+phi0 = -np.pi/4.
 
 def derivs(state, t):
 
     dydx = np.zeros_like(state)
     dydx[0] = state[1]
-    # Second particle radial component of acceleration:
-    a_rad = state [3]**2 * L
     # Tension:
-    T = a_rad*M2 + M2*G*np.cos (state[2])
+    T = M2*(G*np.cos (state[2])+L*state[3]**2)/\
+        (1.+M2/M1*np.sin(state[2])**2)
     # F = ma for the first particle
     dydx[1] = 1./M1 * T*np.sin (state[2])
 
     dydx[2] = state[3]
 
-    dydx[3] = -G*np.sin (state[2])
+    dydx[3] = -dydx[1]*np.cos(state[2])/L - G*np.sin(state[2])/L
 
     return dydx
 
@@ -80,7 +79,7 @@ t = np.arange(0, t_stop, dt)
 x = -0.3
 v = .5
 # phi and w --- angle and angular velocity of the second (bottom) particle
-phi =-np.pi/4.
+phi = phi0
 w = 0.
 
 # initial state
@@ -101,7 +100,7 @@ y2 = -L*np.cos(y[:, 2]) + y1
 
 fig = plt.figure(figsize=(12.5, 5))
 # Here you can adjust the size of the window and the limits.
-ax = fig.add_subplot(autoscale_on=False, xlim=(-1.5*L, 2.*L), ylim=(-1.2*L, 0.1))
+ax = fig.add_subplot(autoscale_on=False, xlim=(-1.3*L, 2.2*L), ylim=(-1.2*L, 0.1))
 # Pay attention, that the aspect ratio is 1
 ax.set_aspect('equal')
 ax.grid()
